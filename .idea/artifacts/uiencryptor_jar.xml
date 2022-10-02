@@ -1,0 +1,9 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="uiencryptor:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/uiencryptor_jar</output-path>
+    <root id="archive" name="uiencryptor.jar">
+      <element id="module-output" name="uiencryptor" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/flatlaf-demo-2.5.jar" path-in-jar="/" />
+    </root>
+  </artifact>
+</component>
