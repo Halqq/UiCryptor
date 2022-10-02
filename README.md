@@ -4,7 +4,7 @@ Encrypt and Decrypt your files using java!!
 ![image](https://user-images.githubusercontent.com/72313113/193475531-4105d688-f906-4248-ab17-2187e59be41a.png)
 
 
-#how to use
+# how to use
 
 1. put your jar in any directory
 2. run it using java -jar uiencryptor.jar
