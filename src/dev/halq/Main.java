@@ -3,7 +3,7 @@ package dev.halq;
 import dev.halq.ui.UiMain;
 
 /**
- * @author Halq
+ * @author Halqq
  * @since 02/10/2022
  */
 
