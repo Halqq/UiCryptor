@@ -67,6 +67,8 @@ public class UiMain {
         b2 = new JButton("Decrypt");
 
         Font font = new Font("Ariel", Font.BOLD, 13);
+        Font font2 = new Font("Ariel", Font.BOLD, 9);
+
 
         //key text bar
         JTextField keyBar = new JTextField(10);
@@ -81,7 +83,7 @@ public class UiMain {
         //console area
         JTextArea textArea = new JTextArea(20, 40);
 
-        textArea.setFont(font);
+        textArea.setFont(font2);
         textArea.setEditable(false);
 
         OutputStream out = new OutputStream() {
