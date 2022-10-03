@@ -1,7 +1,7 @@
 package dev.halq.ui.tabs;
 
-import dev.halq.utils.DESCrypto.DecryptDES;
-import dev.halq.utils.DESCrypto.EncryptDES;
+import dev.halq.utils.desCrypto.DecryptDES;
+import dev.halq.utils.desCrypto.EncryptDES;
 
 import javax.swing.*;
 import java.awt.*;

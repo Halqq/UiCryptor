@@ -1,4 +1,4 @@
-package dev.halq.utils.DESCrypto;
+package dev.halq.utils.desCrypto;
 
 
 import javax.crypto.BadPaddingException;
@@ -8,7 +8,6 @@ import javax.crypto.NoSuchPaddingException;
 import javax.crypto.spec.SecretKeySpec;
 import java.io.*;
 import java.security.InvalidKeyException;
-import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 
 public class CryptoDES {
