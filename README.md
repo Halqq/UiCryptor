@@ -1,7 +1,7 @@
 # UiCryptor
 Encrypt and Decrypt your files using java!!
 
-![image](https://user-images.githubusercontent.com/72313113/193475531-4105d688-f906-4248-ab17-2187e59be41a.png)
+![image](https://user-images.githubusercontent.com/72313113/193700835-6162d3d2-8109-4ad6-8fcc-9e47859f9cc8.png)
 
 
 # how to use
