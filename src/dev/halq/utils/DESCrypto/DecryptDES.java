@@ -1,4 +1,4 @@
-package dev.halq.utils.PBEWCrypto;
+package dev.halq.utils.DESCrypto;
 
 import javax.crypto.Cipher;
 import java.io.File;

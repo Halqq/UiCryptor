@@ -1,6 +1,5 @@
 package dev.halq.ui;
 
-import com.formdev.flatlaf.FlatDarculaLaf;
 import com.formdev.flatlaf.intellijthemes.FlatDarkPurpleIJTheme;
 import dev.halq.Main;
 import dev.halq.ui.tabs.AESTab;
@@ -17,8 +16,6 @@ public class UiMain {
     public static void main(){
 
         FlatDarkPurpleIJTheme.setup();
-
-
 
         System.out.println("Loading gui");
         System.out.println("================================================================");

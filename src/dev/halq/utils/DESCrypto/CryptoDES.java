@@ -1,19 +1,16 @@
-package dev.halq.utils.PBEWCrypto;
+package dev.halq.utils.DESCrypto;
 
 
-import javax.crypto.*;
-import javax.crypto.spec.IvParameterSpec;
+import javax.crypto.BadPaddingException;
+import javax.crypto.Cipher;
+import javax.crypto.IllegalBlockSizeException;
+import javax.crypto.NoSuchPaddingException;
 import javax.crypto.spec.SecretKeySpec;
 import java.io.*;
-import java.nio.charset.StandardCharsets;
-import java.security.*;
-import java.security.spec.AlgorithmParameterSpec;
+import java.security.InvalidKeyException;
+import java.security.NoSuchAlgorithmException;
 
 public class CryptoDES {
-    Cipher ecipher;
-    Cipher dcipher;
-    // 8-byte Salt
-
 
     public static void doCrypto(int mode, File inputFile, File outputFile) {
         try {
@@ -21,10 +18,9 @@ public class CryptoDES {
             byte[] key = new byte[8];
             SecretKeySpec newKey = new SecretKeySpec(key, "DES");
 
-
             Cipher ecipher = Cipher.getInstance("DES");
 
-            ecipher.init(mode,newKey);
+            ecipher.init(mode, newKey);
 
             FileInputStream inputStream = new FileInputStream(inputFile);
 
@@ -45,7 +41,7 @@ public class CryptoDES {
             e.printStackTrace();
         } catch (NoSuchAlgorithmException e) {
             e.printStackTrace();
-       } catch (InvalidKeyException e) {
+        } catch (InvalidKeyException e) {
             e.printStackTrace();
         } catch (FileNotFoundException e) {
             e.printStackTrace();

@@ -1,7 +1,7 @@
 package dev.halq.ui.tabs;
 
-import dev.halq.utils.PBEWCrypto.DecryptDES;
-import dev.halq.utils.PBEWCrypto.EncryptDES;
+import dev.halq.utils.DESCrypto.DecryptDES;
+import dev.halq.utils.DESCrypto.EncryptDES;
 
 import javax.swing.*;
 import java.awt.*;
@@ -54,12 +54,10 @@ public class DESTab extends JPanel {
         Font font = new Font("Ariel", Font.BOLD, 13);
         Font font2 = new Font("Ariel", Font.BOLD, 9);
 
-
         //buttons
         p4.add(b);
         p4.add(b2);
         this.add(p4);
-
 
         //input files
         JTextField inputFile = new JTextField(20);
@@ -94,21 +92,18 @@ public class DESTab extends JPanel {
             public void actionPerformed(ActionEvent e) {
                 System.out.println("[UiCryptor] DES " + "Encrypt file resource");
 
-
-                if (!(inputFile.getText() == null && outputFile.getText() == null )) {
+                if (!(inputFile.getText() == null && outputFile.getText() == null)) {
 
                     File inFile = new File(inputFile.getText());
                     File outFile = new File(outputFile.getText());
 
                     if (inFile.exists() && !outputFile.getText().isEmpty()) {
 
-
                         try {
                             EncryptDES.encrypt(inFile, outFile);
                         } catch (IOException ex) {
                             ex.printStackTrace();
                         }
-
 
                         System.out.println("[UiCryptor] DES " + "Your file is encrypted!");
 
@@ -123,15 +118,13 @@ public class DESTab extends JPanel {
             }
         });
 
-
         b2.addActionListener(new ActionListener() {
 
             @Override
             public void actionPerformed(ActionEvent e) {
                 System.out.println("[UiCryptor] DES " + "Decrypt file resource");
 
-
-                if (!(inputFile.getText() == null && outputFile.getText() == null )) {
+                if (!(inputFile.getText() == null && outputFile.getText() == null)) {
 
                     File inFile = new File(inputFile.getText());
                     File outFile = new File(outputFile.getText());
@@ -161,6 +154,5 @@ public class DESTab extends JPanel {
                 "DES File Transformation");
         this.add(name);
     }
-
 
 }
