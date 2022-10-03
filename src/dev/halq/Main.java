@@ -9,12 +9,13 @@ import dev.halq.ui.UiMain;
 
 public class Main {
 
-    public static String version = "0.0.1";
+    public static String version = "0.0.2";
 
-    public static void main(String[] args){
-        UiMain.renderGui();
-        System.out.println("[UiCryptor] " + "Welcome to UiCryptor!, this encrypt files with AES encryption");
+    public static void main(String[] args) {
+        //UiMain.main();
+        UiMain.main();
+        System.out.println("[UiCryptor] " + "Welcome to UiCryptor!, this encrypt files with AES, DES encryption!");
         System.out.println("[UiCryptor] " + "Made by Halq");
-        System.out.println("[UiCryptor] " + "Use Encrypt 216-key");
+        System.out.println("[UiCryptor] AES " + "Use Encrypt 216-key");
     }
 }

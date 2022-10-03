@@ -1,4 +1,4 @@
-package dev.halq.utils.cryptoUtil;
+package dev.halq.utils.aesCrypto;
 
 import javax.crypto.BadPaddingException;
 import javax.crypto.Cipher;
@@ -15,14 +15,16 @@ import java.util.concurrent.TimeUnit;
  * @since 02/10/2022
  */
 
-public class Decrypt {
+public class DecryptAES {
 
     public static void encrypt(String key, File inputFile, File outputFile) throws IOException, InterruptedException, NoSuchPaddingException, IllegalBlockSizeException, NoSuchAlgorithmException, BadPaddingException, InvalidKeyException {
 
         TimeUnit.SECONDS.sleep(2);
-        System.out.println("[UiCryptor] " + "Loading Decryptor");
-        Crypto.doCrypto(Cipher.DECRYPT_MODE, key, inputFile, outputFile);
-        System.out.println("[UiCryptor] " + "Cipher set mode DECRYPT_MODE");
+        System.out.println("[UiCryptor] AES " + "Loading Decryptor");
+        CryptoAES.doCrypto(Cipher.DECRYPT_MODE, key, inputFile, outputFile);
+        System.out.println("[UiCryptor] AES " + "Cipher set mode DECRYPT_MODE");
+        System.out.println("[UiCryptor] AES " + "Decrypt key : " + key);
+        TimeUnit.SECONDS.sleep(2);
 
     }
 }
