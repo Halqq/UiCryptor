@@ -51,11 +51,11 @@ public class UiMain {
         System.setErr(new PrintStream(out));
 
         p6.add(textArea);
-        p6.setBounds(-50, 115, 900, 160);
+        p6.setBounds(-50, 186, 900, 160);
 
         JScrollPane scroll = new JScrollPane (textArea );
         scroll.setVerticalScrollBarPolicy ( ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS );
-        scroll.setBounds(80, 115, 500, 160);
+        scroll.setBounds(80, 186, 500, 160);
 
         j.add( scroll );
 
@@ -68,7 +68,7 @@ public class UiMain {
         p.add("DES", new DESTab());
         System.out.println("Loaded DES tab");
 
-        p.setPreferredSize(new Dimension(640, 300));
+        p.setPreferredSize(new Dimension(640, 450));
         j.add(p, BorderLayout.CENTER);
         j.setLocation(150, 100);
         j.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

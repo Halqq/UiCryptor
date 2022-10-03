@@ -8,6 +8,7 @@ import javax.crypto.NoSuchPaddingException;
 import javax.crypto.spec.SecretKeySpec;
 import java.io.*;
 import java.security.InvalidKeyException;
+import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 
 public class CryptoDES {
@@ -16,6 +17,7 @@ public class CryptoDES {
         try {
 
             byte[] key = new byte[8];
+
             SecretKeySpec newKey = new SecretKeySpec(key, "DES");
 
             Cipher ecipher = Cipher.getInstance("DES");
