@@ -11,7 +11,7 @@ import java.io.IOException;
 
 public class Main {
 
-    public static String version = "0.0.4";
+    public static String version = "0.0.5";
 
     public static void main(String[] args) throws IOException {
         UiMain.main();
