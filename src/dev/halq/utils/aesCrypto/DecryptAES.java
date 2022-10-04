@@ -17,7 +17,7 @@ import java.util.concurrent.TimeUnit;
 
 public class DecryptAES {
 
-    public static void encrypt(String key, File inputFile, File outputFile) throws IOException, InterruptedException, NoSuchPaddingException, IllegalBlockSizeException, NoSuchAlgorithmException, BadPaddingException, InvalidKeyException {
+    public static void decrypt(String key, File inputFile, File outputFile) throws IOException, InterruptedException, NoSuchPaddingException, IllegalBlockSizeException, NoSuchAlgorithmException, BadPaddingException, InvalidKeyException {
 
         TimeUnit.SECONDS.sleep(2);
         System.out.println("[UiCryptor] AES " + "Loading Decryptor");

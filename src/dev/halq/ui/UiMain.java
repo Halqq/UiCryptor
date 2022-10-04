@@ -3,7 +3,9 @@ package dev.halq.ui;
 import com.formdev.flatlaf.intellijthemes.FlatDarkPurpleIJTheme;
 import dev.halq.Main;
 import dev.halq.ui.tabs.AESTab;
+import dev.halq.ui.tabs.BlowFishTab;
 import dev.halq.ui.tabs.DESTab;
+import dev.halq.ui.tabs.RC2Tab;
 
 import javax.swing.*;
 import java.awt.*;
@@ -67,6 +69,11 @@ public class UiMain {
         System.out.println("Loaded AES tab");
         p.add("DES", new DESTab());
         System.out.println("Loaded DES tab");
+        p.add("RC2", new RC2Tab());
+        System.out.println("Loaded RC2 tab");
+        p.add("BlowFish", new BlowFishTab());
+        System.out.println("Loaded RC2 tab");
+
 
         p.setPreferredSize(new Dimension(640, 450));
         j.add(p, BorderLayout.CENTER);

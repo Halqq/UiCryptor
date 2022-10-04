@@ -1,4 +1,4 @@
-package dev.halq.utils.desCrypto;
+package dev.halq.utils.blowFish;
 
 import javax.crypto.BadPaddingException;
 import javax.crypto.Cipher;
@@ -9,16 +9,14 @@ import java.io.*;
 import java.security.InvalidKeyException;
 import java.security.NoSuchAlgorithmException;
 
-public class CryptoDES {
+public class CryptoBlowFish {
 
-    public static void doCrypto(int mode, File inputFile, File outputFile) {
+    public static void doCrypto(int mode, File inputFile, File outputFile, byte[] key) {
         try {
 
-            byte[] key = new byte[8];
+            SecretKeySpec newKey = new SecretKeySpec(key, "Blowfish");
 
-            SecretKeySpec newKey = new SecretKeySpec(key, "DES");
-
-            Cipher ecipher = Cipher.getInstance("DES");
+            Cipher ecipher = Cipher.getInstance("Blowfish");
 
             ecipher.init(mode, newKey);
 
@@ -51,6 +49,6 @@ public class CryptoDES {
             e.printStackTrace();
         } catch (BadPaddingException e) {
             e.printStackTrace();
+
         }
-    }
-}
+    }}

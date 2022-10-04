@@ -1,37 +1,28 @@
 package dev.halq.ui.tabs;
 
-import dev.halq.utils.aesCrypto.DecryptAES;
-import dev.halq.utils.aesCrypto.EncryptAES;
-import dev.halq.utils.aesCrypto.RandomKey;
+import dev.halq.utils.rc2Crypto.DecryptRC2;
+import dev.halq.utils.rc2Crypto.EncryptRC2;
 import dev.halq.utils.wattermark.Wattermark;
 
-import javax.crypto.BadPaddingException;
-import javax.crypto.IllegalBlockSizeException;
-import javax.crypto.NoSuchPaddingException;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
 import java.io.IOException;
-import java.security.InvalidKeyException;
-import java.security.NoSuchAlgorithmException;
-import java.util.Random;
 
 /**
  * @author Halq
  * @since 02/10/2022
  */
 
-public class AESTab extends JPanel {
+public class RC2Tab extends JPanel {
 
     static JLabel inputlabel;
     static JLabel outputlabel;
-    static JLabel keyLabel;
     static JCheckBox w;
     static JButton b;
     static JButton b2;
-    static JButton b3;
     static JPanel p;
     static JPanel p2;
     static JPanel p3;
@@ -40,11 +31,10 @@ public class AESTab extends JPanel {
     static JPanel p6;
     static JPanel p7;
     static JPanel p8;
-    static JPanel p9;
-    JLabel name;
+    static JLabel name;
     static JScrollPane scrollBar;
 
-    public AESTab() {
+    public RC2Tab() {
         renderGui();
     }
 
@@ -54,8 +44,6 @@ public class AESTab extends JPanel {
 
         outputlabel = new JLabel("Output file");
 
-        keyLabel = new JLabel("Key");
-
         p = new JPanel();
         p2 = new JPanel();
         p3 = new JPanel();
@@ -64,22 +52,17 @@ public class AESTab extends JPanel {
         p6 = new JPanel();
         p7 = new JPanel();
         p8 = new JPanel();
-        p9 = new JPanel();
         b = new JButton("Encrypt");
         b2 = new JButton("Decrypt");
-        b3 = new JButton("Generate key");
         w = new JCheckBox("Wattermark");
 
         Font font = new Font("Ariel", Font.BOLD, 13);
         Font font2 = new Font("Ariel", Font.BOLD, 9);
 
-
         //buttons
         p4.add(b);
         p4.add(b2);
-        p4.add(b3);
         this.add(p4);
-
 
         //input files
         JTextField inputFile = new JTextField(20);
@@ -101,14 +84,9 @@ public class AESTab extends JPanel {
         textArea.setFont(font2);
         textArea.setEditable(false);
 
-        //key text bar
-        JTextField keyBar = new JTextField(10);
-        p5.add(keyLabel);
-        p5.add(keyBar);
-        keyLabel.setFont(font);
-        this.add(p5);
-
         //encrypty button
+        JLabel espace = new JLabel("                                             ");
+        p4.add(espace);
         p4.add(b);
         p4.add(b2);
         this.add(p4);
@@ -120,55 +98,49 @@ public class AESTab extends JPanel {
 
             @Override
             public void actionPerformed(ActionEvent e) {
-                System.out.println("[UiCryptor] AES " + "Encrypt file resource");
+                System.out.println("[UiCryptor] RC2 " + "Encrypt file resource");
 
-                if (!(inputFile.getText() == null && outputFile.getText() == null && keyBar.getText() == null)) {
+                if (!(inputFile.getText() == null && outputFile.getText() == null)) {
 
                     File inFile = new File(inputFile.getText());
                     File outFile = new File(outputFile.getText());
-                    String key = keyBar.getText();
 
                     if (inFile.exists() && !outputFile.getText().isEmpty()) {
 
                         try {
-                            EncryptAES.encrypt(key, inFile, outFile);
+                            EncryptRC2.encrypt(inFile, outFile);
+
                             if(w.isSelected()) {
                                 Wattermark.addWattermark(outFile);
                             }
 
-                        } catch (IOException | NoSuchPaddingException | IllegalBlockSizeException | NoSuchAlgorithmException | BadPaddingException | InvalidKeyException ex) {
-                            ex.printStackTrace();
-                            System.out.println(e);
-                        } catch (InterruptedException ex) {
+                        } catch (IOException ex) {
                             ex.printStackTrace();
                         }
 
-                        System.out.println("[UiCryptor] AES " + "Your file is encrypted!");
+                        System.out.println("[UiCryptor] RC2 " + "Your file is encrypted!");
 
                     } else {
-                        System.out.println("[UiCryptor] AES " + "Please enter valid input and valid output");
+                        System.out.println("[UiCryptor] RC2 " + "Please enter valid input and valid output");
 
                     }
 
                 } else {
-                    System.out.println("[UiCryptor] AES " + "Please put values in all text fields");
+                    System.out.println("[UiCryptor] RC2 " + "Please put values in all text fields");
                 }
             }
         });
-
 
         b2.addActionListener(new ActionListener() {
 
             @Override
             public void actionPerformed(ActionEvent e) {
-                System.out.println("[UiCryptor] AES " + "Decrypt file resource");
+                System.out.println("[UiCryptor] RC2 " + "Decrypt file resource");
 
-
-                if (!(inputFile.getText() == null && outputFile.getText() == null && keyBar.getText() == null)) {
+                if (!(inputFile.getText() == null && outputFile.getText() == null)) {
 
                     File inFile = new File(inputFile.getText());
                     File outFile = new File(outputFile.getText());
-                    String key = keyBar.getText();
 
                     if (inFile.exists() && !outputFile.getText().isEmpty()) {
 
@@ -176,44 +148,29 @@ public class AESTab extends JPanel {
                             if(w.isSelected()) {
                                 Wattermark.remove(inFile);
                             }
-                            DecryptAES.decrypt(key, inFile, outFile);
+                            DecryptRC2.decrypt(inFile, outFile);
 
-                        } catch (IOException | NoSuchPaddingException | IllegalBlockSizeException | NoSuchAlgorithmException | BadPaddingException | InvalidKeyException ex) {
-                            ex.printStackTrace();
-                            System.out.println(e);
-                        } catch (InterruptedException ex) {
+                        } catch (IOException ex) {
                             ex.printStackTrace();
                         }
 
-                        System.out.println("[UiCryptor] AES " + "Your file is decrypted!");
+                        System.out.println("[UiCryptor] RC2 " + "Your file is decrypted!");
 
                     } else {
-                        System.out.println("[UiCryptor] AES " + "Please enter valid input and valid output");
+                        System.out.println("[UiCryptor] RC2 " + "Please enter valid input and valid output");
 
                     }
 
                 } else {
-                    System.out.println("[UiCryptor] AES " + "Please put values in all text fields");
+                    System.out.println("[UiCryptor] RC2 " + "Please put values in all text fields");
                 }
             }
         });
 
-        b3.addActionListener(new ActionListener() {
-
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                Random r = new Random();
-                int randomitem = r.nextInt(RandomKey.getRandomKeys().size());
-                String randomKey = RandomKey.getRandomKeys().get(randomitem);
-
-                keyBar.setText(randomKey);
-            }
-        });
-
         name = new JLabel("\n" +
-                "AES File Transformation");
+                "                                 RC2 File Transformation");
         this.add(name);
     }
 
-
 }
+

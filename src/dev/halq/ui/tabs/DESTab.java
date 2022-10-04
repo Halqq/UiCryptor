@@ -2,6 +2,7 @@ package dev.halq.ui.tabs;
 
 import dev.halq.utils.desCrypto.DecryptDES;
 import dev.halq.utils.desCrypto.EncryptDES;
+import dev.halq.utils.wattermark.Wattermark;
 
 import javax.swing.*;
 import java.awt.*;
@@ -9,6 +10,8 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
 import java.io.IOException;
+
+import static javafx.scene.input.KeyCode.J;
 
 /**
  * @author Halq
@@ -19,6 +22,7 @@ public class DESTab extends JPanel {
 
     static JLabel inputlabel;
     static JLabel outputlabel;
+    static JCheckBox w;
     static JButton b;
     static JButton b2;
     static JPanel p;
@@ -28,6 +32,7 @@ public class DESTab extends JPanel {
     static JPanel p5;
     static JPanel p6;
     static JPanel p7;
+    static JPanel p8;
     static JLabel name;
     static JScrollPane scrollBar;
 
@@ -48,8 +53,10 @@ public class DESTab extends JPanel {
         p5 = new JPanel();
         p6 = new JPanel();
         p7 = new JPanel();
+        p8 = new JPanel();
         b = new JButton("Encrypt");
         b2 = new JButton("Decrypt");
+        w = new JCheckBox("Wattermark");
 
         Font font = new Font("Ariel", Font.BOLD, 13);
         Font font2 = new Font("Ariel", Font.BOLD, 9);
@@ -80,11 +87,14 @@ public class DESTab extends JPanel {
         textArea.setEditable(false);
 
         //encrypty button
-        JLabel espace = new JLabel("                                       ");
+        JLabel espace = new JLabel("                                             ");
         p4.add(espace);
         p4.add(b);
         p4.add(b2);
         this.add(p4);
+
+        p8.add(w);
+        this.add(p8);
 
         b.addActionListener(new ActionListener() {
 
@@ -101,6 +111,11 @@ public class DESTab extends JPanel {
 
                         try {
                             EncryptDES.encrypt(inFile, outFile);
+
+                            if(w.isSelected()) {
+                                Wattermark.addWattermark(outFile);
+                            }
+
                         } catch (IOException ex) {
                             ex.printStackTrace();
                         }
@@ -132,7 +147,11 @@ public class DESTab extends JPanel {
                     if (inFile.exists() && !outputFile.getText().isEmpty()) {
 
                         try {
+                            if(w.isSelected()) {
+                                Wattermark.remove(inFile);
+                            }
                             DecryptDES.decrypt(inFile, outFile);
+
                         } catch (IOException ex) {
                             ex.printStackTrace();
                         }
@@ -151,7 +170,8 @@ public class DESTab extends JPanel {
         });
 
         name = new JLabel("\n" +
-                "DES File Transformation");
+                "        " +
+                "                         DES File Transformation");
         this.add(name);
     }
 
