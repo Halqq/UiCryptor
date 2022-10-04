@@ -24,6 +24,8 @@ public class BlowFishTab extends JPanel {
     static JLabel inputlabel;
     static JComboBox m;
     static JLabel outputlabel;
+    static JButton files;
+    static JButton files2;
     static JCheckBox w;
     static JButton b;
     static JButton b2;
@@ -62,6 +64,8 @@ public class BlowFishTab extends JPanel {
         String country[]={"64-bit","128-bit","256-bit"};
         m = new JComboBox(country);
         String value = m.getSelectedItem().toString();
+        files = new JButton("...");
+        files2 = new JButton("...");
 
         Font font = new Font("Ariel", Font.BOLD, 13);
         Font font2 = new Font("Ariel", Font.BOLD, 9);
@@ -75,15 +79,45 @@ public class BlowFishTab extends JPanel {
         JTextField inputFile = new JTextField(20);
         p2.add(inputlabel);
         p2.add(inputFile);
+        p2.add(files);
         inputlabel.setFont(font);
         this.add(p2);
+
+        files.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                NativeJFileChooser nfileChooser = new NativeJFileChooser(System.getProperty("user.home"));
+                int option = nfileChooser.showOpenDialog(null);
+                if (option == NativeJFileChooser.APPROVE_OPTION) {
+                    File file = nfileChooser.getSelectedFile();
+                    inputFile.setText(file.getAbsolutePath());
+
+                }
+            }
+
+        });
 
         //outputFiles
         JTextField outputFile = new JTextField(20);
         p3.add(outputlabel);
         p3.add(outputFile);
+        p3.add(files2);
         outputlabel.setFont(font);
         this.add(p3);
+
+        files2.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                NativeJFileChooser nfileChooser = new NativeJFileChooser(System.getProperty("user.home"));
+                int option = nfileChooser.showOpenDialog(null);
+                if (option == NativeJFileChooser.APPROVE_OPTION) {
+                    File file = nfileChooser.getSelectedFile();
+                    outputFile.setText(file.getAbsolutePath());
+
+                }
+            }
+
+        });
 
         //console area
         JTextArea textArea = new JTextArea(20, 40);

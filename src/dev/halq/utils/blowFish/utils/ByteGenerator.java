@@ -17,6 +17,7 @@ public class ByteGenerator {
         Random r = new Random();
         int randomitem = r.nextInt(randomKey64().size());
         String randomKey64v = randomKey64().get(randomitem);
+        System.out.println("[UiCryptor] BlowFish keys:" + randomKey64());
 
         return randomKey64v;
     }
@@ -25,6 +26,8 @@ public class ByteGenerator {
         Random r = new Random();
         int randomitem = r.nextInt(randomKey128().size());
         String randomKey128v = randomKey128().get(randomitem);
+
+        System.out.println("[UiCryptor] BlowFish keys:" + randomKey128());
 
         return randomKey128v;
     }

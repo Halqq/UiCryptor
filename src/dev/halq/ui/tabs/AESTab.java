@@ -28,6 +28,8 @@ public class AESTab extends JPanel {
     static JLabel inputlabel;
     static JLabel outputlabel;
     static JLabel keyLabel;
+    static JButton files;
+    static JButton files2;
     static JCheckBox w;
     static JButton b;
     static JButton b2;
@@ -50,9 +52,9 @@ public class AESTab extends JPanel {
 
     public void renderGui() {
 
-        inputlabel = new JLabel("Input file");
+        inputlabel = new JLabel("Input file:");
 
-        outputlabel = new JLabel("Output file");
+        outputlabel = new JLabel("Output file:");
 
         keyLabel = new JLabel("Key");
 
@@ -69,6 +71,9 @@ public class AESTab extends JPanel {
         b2 = new JButton("Decrypt");
         b3 = new JButton("Generate key");
         w = new JCheckBox("Wattermark");
+        files = new JButton("...");
+        files2 = new JButton("...");
+
 
         Font font = new Font("Ariel", Font.BOLD, 13);
         Font font2 = new Font("Ariel", Font.BOLD, 9);
@@ -85,15 +90,45 @@ public class AESTab extends JPanel {
         JTextField inputFile = new JTextField(20);
         p2.add(inputlabel);
         p2.add(inputFile);
+        p2.add(files);
         inputlabel.setFont(font);
         this.add(p2);
+
+        files.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                NativeJFileChooser nfileChooser = new NativeJFileChooser(System.getProperty("user.home"));
+                int option = nfileChooser.showOpenDialog(null);
+                if (option == NativeJFileChooser.APPROVE_OPTION) {
+                    File file = nfileChooser.getSelectedFile();
+                    inputFile.setText(file.getAbsolutePath());
+
+                }
+            }
+
+        });
 
         //outputFiles
         JTextField outputFile = new JTextField(20);
         p3.add(outputlabel);
         p3.add(outputFile);
-        outputlabel.setFont(font);
+        p3.add(files2);
+        outputFile.setFont(font);
         this.add(p3);
+
+        files2.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                NativeJFileChooser nfileChooser = new NativeJFileChooser(System.getProperty("user.home"));
+                int option = nfileChooser.showOpenDialog(null);
+                if (option == NativeJFileChooser.APPROVE_OPTION) {
+                    File file = nfileChooser.getSelectedFile();
+                    outputFile.setText(file.getAbsolutePath());
+
+                }
+            }
+
+        });
 
         //console area
         JTextArea textArea = new JTextArea(20, 40);

@@ -57,7 +57,7 @@ public class UiMain {
 
         JScrollPane scroll = new JScrollPane (textArea );
         scroll.setVerticalScrollBarPolicy ( ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS );
-        scroll.setBounds(80, 186, 500, 160);
+        scroll.setBounds(90, 170, 630, 230);
 
         j.add( scroll );
 
@@ -75,7 +75,7 @@ public class UiMain {
         System.out.println("Loaded RC2 tab");
 
 
-        p.setPreferredSize(new Dimension(640, 450));
+        p.setPreferredSize(new Dimension(800, 450));
         j.add(p, BorderLayout.CENTER);
         j.setLocation(150, 100);
         j.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
