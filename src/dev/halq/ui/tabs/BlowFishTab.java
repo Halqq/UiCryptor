@@ -4,7 +4,7 @@ package dev.halq.ui.tabs;
 import dev.halq.utils.blowFish.DecryptBlowFish;
 import dev.halq.utils.blowFish.EncryptBlowFish;
 import dev.halq.utils.blowFish.utils.ByteGenerator;
-import dev.halq.utils.wattermark.Wattermark;
+import dev.halq.utils.watermark.Watermark;
 
 import javax.swing.*;
 import java.awt.*;
@@ -12,7 +12,6 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
 import java.io.IOException;
-import java.nio.charset.StandardCharsets;
 
 /**
  * @author Halq
@@ -60,7 +59,7 @@ public class BlowFishTab extends JPanel {
         p8 = new JPanel();
         b = new JButton("Encrypt");
         b2 = new JButton("Decrypt");
-        w = new JCheckBox("Wattermark");
+        w = new JCheckBox("Watermark");
         String country[]={"64-bit","128-bit","256-bit"};
         m = new JComboBox(country);
         String value = m.getSelectedItem().toString();
@@ -184,7 +183,7 @@ public class BlowFishTab extends JPanel {
 
                             if(w.isSelected()) {
                                 try {
-                                    Wattermark.addWattermark(outFile);
+                                    Watermark.addWattermark(outFile);
                                 } catch (IOException ex) {
                                     ex.printStackTrace();
                                 }
@@ -219,7 +218,7 @@ public class BlowFishTab extends JPanel {
 
                         try {
                             if (w.isSelected()) {
-                                Wattermark.remove(inFile);
+                                Watermark.remove(inFile);
                             }
                         } catch (IOException ex) {
                             ex.printStackTrace();

@@ -1,7 +1,7 @@
 package dev.halq.ui.tabs;
 
-import dev.halq.utils.desCrypto.DecryptDES;
-import dev.halq.utils.desCrypto.EncryptDES;
+import dev.halq.utils.base64.Base64Decode;
+import dev.halq.utils.base64.Base64Encode;
 import dev.halq.utils.watermark.Watermark;
 
 import javax.swing.*;
@@ -11,12 +11,7 @@ import java.awt.event.ActionListener;
 import java.io.File;
 import java.io.IOException;
 
-/**
- * @author Halq
- * @since 02/10/2022
- */
-
-public class DESTab extends JPanel {
+public class Base64Tab extends JPanel {
 
     static JLabel inputlabel;
     static JLabel outputlabel;
@@ -36,7 +31,7 @@ public class DESTab extends JPanel {
     static JLabel name;
     static JScrollPane scrollBar;
 
-    public DESTab() {
+    public Base64Tab() {
         renderGui();
     }
 
@@ -54,8 +49,8 @@ public class DESTab extends JPanel {
         p6 = new JPanel();
         p7 = new JPanel();
         p8 = new JPanel();
-        b = new JButton("Encrypt");
-        b2 = new JButton("Decrypt");
+        b = new JButton("Encode");
+        b2 = new JButton("Decode");
         w = new JCheckBox("Watermark");
         files = new JButton("...");
         files2 = new JButton("...");
@@ -132,7 +127,7 @@ public class DESTab extends JPanel {
 
             @Override
             public void actionPerformed(ActionEvent e) {
-                System.out.println("[UiCryptor] DES " + "Encrypt file resource");
+                System.out.println("[UiCryptor] Base64 " + "Encode file resource");
 
                 if (!(inputFile.getText() == null && outputFile.getText() == null)) {
 
@@ -142,7 +137,7 @@ public class DESTab extends JPanel {
                     if (inFile.exists() && !outputFile.getText().isEmpty()) {
 
                         try {
-                            EncryptDES.encrypt(inFile, outFile);
+                            Base64Encode.encode(inFile, outFile);
 
                             if(w.isSelected()) {
                                 Watermark.addWattermark(outFile);
@@ -152,15 +147,15 @@ public class DESTab extends JPanel {
                             ex.printStackTrace();
                         }
 
-                        System.out.println("[UiCryptor] DES " + "Your file is encrypted!");
+                        System.out.println("[UiCryptor] Base64 " + "Your file is encoded!");
 
                     } else {
-                        System.out.println("[UiCryptor] DES " + "Please enter valid input and valid output");
+                        System.out.println("[UiCryptor] Base64 " + "Please enter valid input and valid output");
 
                     }
 
                 } else {
-                    System.out.println("[UiCryptor] DES " + "Please put values in all text fields");
+                    System.out.println("[UiCryptor] Base64 " + "Please put values in all text fields");
                 }
             }
         });
@@ -169,7 +164,7 @@ public class DESTab extends JPanel {
 
             @Override
             public void actionPerformed(ActionEvent e) {
-                System.out.println("[UiCryptor] DES " + "Decrypt file resource");
+                System.out.println("[UiCryptor] Base64 " + "Decode file resource");
 
                 if (!(inputFile.getText() == null && outputFile.getText() == null)) {
 
@@ -182,28 +177,29 @@ public class DESTab extends JPanel {
                             if(w.isSelected()) {
                                 Watermark.remove(inFile);
                             }
-                            DecryptDES.decrypt(inFile, outFile);
+
+                            Base64Decode.decode(inFile, outFile);
 
                         } catch (IOException ex) {
                             ex.printStackTrace();
                         }
 
-                        System.out.println("[UiCryptor] DES " + "Your file is decrypted!");
+                        System.out.println("[UiCryptor] Base64 " + "Your file is decoded!");
 
                     } else {
-                        System.out.println("[UiCryptor] DES " + "Please enter valid input and valid output");
+                        System.out.println("[UiCryptor] Base64 " + "Please enter valid input and valid output");
 
                     }
 
                 } else {
-                    System.out.println("[UiCryptor] DES " + "Please put values in all text fields");
+                    System.out.println("[UiCryptor] Base64 " + "Please put values in all text fields");
                 }
             }
         });
 
         name = new JLabel("\n" +
                 "        " +
-                "                         DES File Transformation");
+                "                         Base64 File Transformation");
         this.add(name);
     }
 

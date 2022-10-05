@@ -1,10 +1,9 @@
-package dev.halq.utils.wattermark;
+package dev.halq.utils.watermark;
 
 import java.io.DataInputStream;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -12,7 +11,7 @@ public class Util {
 
     public static long search(String text, File file) throws IOException {
 
-        System.out.println("[UiCryptor] WatterMark" + " Searching string");
+        System.out.println("[UiCryptor] WaterMark" + " Searching string");
         if (text.isEmpty())
             return file.exists() ? 0 : -1;
         byte[] bytes = text.getBytes();

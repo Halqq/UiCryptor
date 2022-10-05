@@ -1,9 +1,8 @@
 package dev.halq.ui.tabs;
 
-import com.formdev.flatlaf.intellijthemes.FlatDarkPurpleIJTheme;
 import dev.halq.utils.rc2Crypto.DecryptRC2;
 import dev.halq.utils.rc2Crypto.EncryptRC2;
-import dev.halq.utils.wattermark.Wattermark;
+import dev.halq.utils.watermark.Watermark;
 
 import javax.swing.*;
 import java.awt.*;
@@ -57,7 +56,7 @@ public class RC2Tab extends JPanel {
         p8 = new JPanel();
         b = new JButton("Encrypt");
         b2 = new JButton("Decrypt");
-        w = new JCheckBox("Wattermark");
+        w = new JCheckBox("Watermark");
         files = new JButton("...");
         files2 = new JButton("...");
 
@@ -146,7 +145,7 @@ public class RC2Tab extends JPanel {
                             EncryptRC2.encrypt(inFile, outFile);
 
                             if(w.isSelected()) {
-                                Wattermark.addWattermark(outFile);
+                                Watermark.addWattermark(outFile);
                             }
 
                         } catch (IOException ex) {
@@ -181,7 +180,7 @@ public class RC2Tab extends JPanel {
 
                         try {
                             if(w.isSelected()) {
-                                Wattermark.remove(inFile);
+                                Watermark.remove(inFile);
                             }
                             DecryptRC2.decrypt(inFile, outFile);
 

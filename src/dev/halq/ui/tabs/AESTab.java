@@ -3,7 +3,7 @@ package dev.halq.ui.tabs;
 import dev.halq.utils.aesCrypto.DecryptAES;
 import dev.halq.utils.aesCrypto.EncryptAES;
 import dev.halq.utils.aesCrypto.RandomKey;
-import dev.halq.utils.wattermark.Wattermark;
+import dev.halq.utils.watermark.Watermark;
 
 import javax.crypto.BadPaddingException;
 import javax.crypto.IllegalBlockSizeException;
@@ -70,7 +70,7 @@ public class AESTab extends JPanel {
         b = new JButton("Encrypt");
         b2 = new JButton("Decrypt");
         b3 = new JButton("Generate key");
-        w = new JCheckBox("Wattermark");
+        w = new JCheckBox("Watermark");
         files = new JButton("...");
         files2 = new JButton("...");
 
@@ -168,7 +168,7 @@ public class AESTab extends JPanel {
                         try {
                             EncryptAES.encrypt(key, inFile, outFile);
                             if(w.isSelected()) {
-                                Wattermark.addWattermark(outFile);
+                                Watermark.addWattermark(outFile);
                             }
 
                         } catch (IOException | NoSuchPaddingException | IllegalBlockSizeException | NoSuchAlgorithmException | BadPaddingException | InvalidKeyException ex) {
@@ -209,7 +209,7 @@ public class AESTab extends JPanel {
 
                         try {
                             if(w.isSelected()) {
-                                Wattermark.remove(inFile);
+                                Watermark.remove(inFile);
                             }
                             DecryptAES.decrypt(key, inFile, outFile);
 
