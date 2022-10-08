@@ -13,3 +13,5 @@ Encrypt and Decrypt your files using java!!
 
 5. click in encrypt or decrypt
 6. ready your file is ready!
+
+this use RCZ encoder : https://github.com/Halqq/RCZEncryptation
