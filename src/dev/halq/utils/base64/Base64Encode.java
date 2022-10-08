@@ -14,7 +14,7 @@ public class Base64Encode {
 
         inputStream.read(inputBytes);
 
-        byte[] bytesEncoded = Base64.decodeBase64(inputBytes);
+        byte[] bytesEncoded = Base64.encodeBase64(inputBytes);
 
         FileOutputStream outputStream = new FileOutputStream(outputFile);
 

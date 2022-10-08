@@ -5,6 +5,7 @@
       <element id="module-output" name="uiencryptor" />
       <element id="extracted-dir" path="$PROJECT_DIR$/flatlaf-demo-2.5.jar" path-in-jar="/" />
       <element id="extracted-dir" path="$PROJECT_DIR$/commons-codec-1.6.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/commons-collections4-4.4.jar" path-in-jar="/" />
     </root>
   </artifact>
 </component>

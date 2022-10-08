@@ -72,6 +72,8 @@ public class UiMain {
         System.out.println("Loaded BlowFish tab");
         p.add("Base64", new Base64Tab());
         System.out.println("Loaded Base64 tab");
+        p.add("RCZEncoder", new RCZTab());
+        System.out.println("Loaded RCZTab tab");
 
 
         p.setPreferredSize(new Dimension(800, 450));
